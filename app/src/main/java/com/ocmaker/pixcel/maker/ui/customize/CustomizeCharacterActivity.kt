@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.lvt.ads.util.Admob
 import com.ocmaker.pixcel.maker.R
 import com.ocmaker.pixcel.maker.core.base.BaseActivity
 import com.ocmaker.pixcel.maker.core.extensions.dLog
@@ -621,22 +622,20 @@ class CustomizeCharacterActivity : BaseActivity<ActivityCustomizeBinding>() {
         confirmExit()
     }
 
-//    fun initNativeCollab() {
-//        loadNativeCollabAds(
-//            R.string.native_cl_custom,
-//            binding.flNativeCollab,
-//            binding.flBottomNav,
-//            bottomLoadSuccess = 80
-//        )
-//    }
+    fun initNativeCollab() {
+        Admob.getInstance().loadNativeCollapNotBanner(this,
+            getString(R.string.native_cl_custom),
+            binding.flNativeCollab)
 
-//    override fun initAds() {
-//        initNativeCollab()
-//    }
+    }
+
+    override fun initAds() {
+        initNativeCollab()
+    }
 
     override fun onRestart() {
         super.onRestart()
-        // initNativeCollab()
+         initNativeCollab()
 
     }
 

@@ -30,6 +30,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
+import com.lvt.ads.util.Admob
 import com.ocmaker.pixcel.maker.R
 import com.ocmaker.pixcel.maker.core.base.BaseActivity
 import com.ocmaker.pixcel.maker.core.extensions.checkPermissions
@@ -920,17 +921,18 @@ class AddCharacterActivity : BaseActivity<ActivityAddCharacterBinding>() {
         // This method should not be called if the OnBackPressedCallback is working properly
     }
 
-//    fun initNativeCollab() {
-//        loadNativeCollabAds(R.string.native_cl_bg, binding.flNativeCollab, binding.lnlBottom)
-//    }
+    fun initNativeCollab() {
+        Admob.getInstance().loadNativeCollapNotBanner(this,
+            getString(R.string.native_cl_bg),
+            binding.flNativeCollab)    }
 
-//    override fun initAds() {
-//        initNativeCollab()
-//    }
+    override fun initAds() {
+        initNativeCollab()
+    }
 
     override fun onRestart() {
         super.onRestart()
-      //  initNativeCollab()
+       initNativeCollab()
     }
 
     // Custom Input View Functions

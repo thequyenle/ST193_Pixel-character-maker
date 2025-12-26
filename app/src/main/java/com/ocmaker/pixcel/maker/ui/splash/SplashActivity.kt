@@ -30,7 +30,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
         val rotateAnimation = android.view.animation.AnimationUtils.loadAnimation(this, R.anim.rotate_loading)
         binding.ivLoading.startAnimation(rotateAnimation)
 
-        Admob.getInstance().setOpenShowAllAds(false)
         if (!isTaskRoot &&
             intent.hasCategory(Intent.CATEGORY_LAUNCHER) &&
             intent.action != null &&
@@ -43,8 +42,9 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
         } else {
             Intent(this, IntroActivity::class.java)
         }
+        Admob.getInstance().setTimeCountdownNativeCollab(15000)
         Admob.getInstance().setTimeLimitShowAds(30000)
-        Admob.getInstance().setOpenShowAllAds(false)
+        Admob.getInstance().setOpenShowAllAds(true)
         interCallBack = object : InterCallback() {
             override fun onNextAction() {
                 super.onNextAction()

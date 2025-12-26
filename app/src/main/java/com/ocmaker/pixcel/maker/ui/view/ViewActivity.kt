@@ -178,7 +178,7 @@ class ViewActivity : BaseActivity<ActivityViewBinding>() {
             actionBar.apply {
                 btnActionBarLeft.tap { handleBack() }
                 btnActionBarRight.tap { handleActionBarRight() }
-                btnActionBarNextRight.tap { handleEditClick(viewModel.pathInternal.value) }
+                btnActionBarNextRight.tap { showInterAll { handleEditClick(viewModel.pathInternal.value) } }
                 btnShare.tap(2500) { viewModel.shareFiles(this@ViewActivity) }
             }
 
@@ -426,6 +426,19 @@ class ViewActivity : BaseActivity<ActivityViewBinding>() {
         }
     }
 
+
+    fun initNativeCollab() {
+        if (viewModel.typeUI.value == ValueKey.TYPE_VIEW) {
+            loadNativeCollabAds(R.string.native_cl_detail, binding.flNativeCollab, binding.lnlBottom)
+        } else{
+            loadNativeCollabAds(R.string.native_cl_ss, binding.flNativeCollab, binding.lnlBottom)
+
+        }
+    }
+
+    override fun initAds() {
+        initNativeCollab()
+    }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)

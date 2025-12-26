@@ -153,15 +153,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="0dp"
         android:fontFamily="@font/pixelifysans_semibold"
         android:gravity="center"
         android:text="@string/continue_per"
         android:textColor="#01579B"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/native_ads"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <FrameLayout
+        android:id="@+id/native_ads"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <include layout="@layout/ads_native_big_btn_bottom_shimmer" />
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
